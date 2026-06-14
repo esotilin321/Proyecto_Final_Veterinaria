@@ -25,7 +25,6 @@ public class Proyecto_Final_Veterinaria {
         listaVeterinarios.add(new Veterinario("V004", "Dr. Mick Thomson", "mick.thomson@veterinaria.com", "0777", "Cirugía", "015464"));
         listaVeterinarios.add(new Veterinario("V005", "Dra. Treisy Clavo", "trisy.clavo@veterinaria.com", "0555", "Neurología", "301105"));
         listaVeterinarios.add(new Veterinario("V006", "Dra. Emily Amstron", "emily.amstron@veterinaria.com", "0545", "Anestesiología", "487641"));
-        listaVeterinarios.add(new Veterinario("V007", "Dr. Carlos Mendoza", "carlos.mendoza@veterinaria.com", "0654", "General", "987321"));
         // 2. Servicios Médicos
         listaServicios.add(new ServicioMedico("S001", "Consulta General", 30.0));
         listaServicios.add(new ServicioMedico("S002", "Vacunación", 25.0));
