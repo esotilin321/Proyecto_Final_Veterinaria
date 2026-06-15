@@ -24,15 +24,20 @@ public class VentanaPrincipal extends JFrame {
 
     public VentanaPrincipal() {
         // Datos predefinidos
-        listaVeterinarios.add(new Veterinario("V001", "Dr. Carlos Mendoza", "carlos@veterinaria.com", "1234", "Cirugía", "CM0987"));
-        listaVeterinarios.add(new Veterinario("V002", "Dra. Ana Gómez", "ana@veterinaria.com", "5678", "Dermatología", "AG6543"));
+        listaVeterinarios.add(new Veterinario("V001", "Dr. Chesster Benhinthon", "chester.benhinthon@veterinaria.com", "1234", "Cirugía", "450987"));
+        listaVeterinarios.add(new Veterinario("V002", "Dra. Amy Lee", "amy.lee@veterinaria.com", "5678", "Dermatología", "121452"));
+        listaVeterinarios.add(new Veterinario("V003", "Dr. James Root", "james.root@veterinaria.com", "7066", "Cardiología", "750024"));
+        listaVeterinarios.add(new Veterinario("V004", "Dr. Mick Thomson", "mick.thomson@veterinaria.com", "0777", "Cirugía", "015464"));
+        listaVeterinarios.add(new Veterinario("V005", "Dra. Treisy Clavo", "trisy.clavo@veterinaria.com", "0555", "Neurología", "301105"));
+        listaVeterinarios.add(new Veterinario("V006", "Dra. Emily Amstron", "emily.amstron@veterinaria.com", "0545", "Anestesiología", "487641"));
+        listaVeterinarios.add(new Veterinario("V007", "Dr. Carlos Mendoza", "carlos.mendoza@veterinaria.com", "0654", "General", "987321"));
+        
+        
         listaServicios.add(new ServicioMedico("S001", "Consulta General", 30.0));
         listaServicios.add(new ServicioMedico("S002", "Vacunación Anual", 25.0));
         listaServicios.add(new ServicioMedico("S003", "Desparasitación", 15.0));
         listaServicios.add(new ServicioMedico("S004", "Ecografía", 50.0));
         listaServicios.add(new ServicioMedico("S005", "Cirugía Menor", 120.0));
-        listaMascotas.add(new Mascota("M001", "Toby", "Perro", "Golden Retriever", 3, "Juan Pérez", "987654321"));
-        listaMascotas.add(new Mascota("M002", "Luna", "Gato", "Siamés", 2, "María López", "912345678"));
 
         setTitle("Clínica Veterinaria - Sistema de Gestión");
         setSize(600, 450);
@@ -47,7 +52,7 @@ public class VentanaPrincipal extends JFrame {
         JPanel panelHeader = new JPanel();
         panelHeader.setBackground(new Color(33, 97, 140));
         panelHeader.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        JLabel lblTitulo = new JLabel("🐾 Clínica Veterinaria");
+        JLabel lblTitulo = new JLabel("Clínica Veterinaria");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
         lblTitulo.setForeground(Color.WHITE);
         panelHeader.add(lblTitulo);
