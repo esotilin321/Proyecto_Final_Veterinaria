@@ -13,12 +13,15 @@ import java.util.ArrayList;
  * @author Jean Purizaga
  */
 public class VentanaPrincipal extends JFrame{
+    
 
     private ArrayList<Mascota> listaMascotas = new ArrayList<>();
     private ArrayList<Veterinario> listaVeterinarios = new ArrayList<>();
     private ArrayList<ServicioMedico> listaServicios = new ArrayList<>();
     private ArrayList<Consulta> listaConsultas = new ArrayList<>();
     private ArrayList<Factura> listaFacturas = new ArrayList<>();
+    private int[] idConsultaCounter = {1};
+    private int[] idFacturaCounter = {1};
 
     public VentanaPrincipal() {
         // Datos predefinidos
@@ -45,7 +48,7 @@ public class VentanaPrincipal extends JFrame{
         JPanel panelHeader = new JPanel();
         panelHeader.setBackground(new Color(33, 97, 140));
         panelHeader.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        JLabel lblTitulo = new JLabel("🐾 Clínica Veterinaria");
+        JLabel lblTitulo = new JLabel("Clínica Veterinaria");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 24));
         lblTitulo.setForeground(Color.WHITE);
         panelHeader.add(lblTitulo);
@@ -61,10 +64,8 @@ public class VentanaPrincipal extends JFrame{
         JButton btn4 = crearBoton("4. Cobrar (Generar Factura)");
         JButton btn5 = crearBoton("5. Ver Reporte del Administrador");
 
-        // Acción botón 1
-        btn1.addActionListener(e -> {
-            new FormRegistrarMascota(listaMascotas).setVisible(true);
-        });
+        btn1.addActionListener(e -> new FormRegistrarMascota(listaMascotas).setVisible(true));
+        btn2.addActionListener(e -> new FormAgendarConsulta(listaMascotas, listaVeterinarios, listaServicios, listaConsultas, idConsultaCounter).setVisible(true));
 
         panelBotones.add(btn1);
         panelBotones.add(btn2);
