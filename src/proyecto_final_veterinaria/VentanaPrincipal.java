@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author Jean Purizaga
  */
-public class VentanaPrincipal  extends JFrame {
+public class VentanaPrincipal extends JFrame {
 
     private ArrayList<Mascota> listaMascotas = new ArrayList<>();
     private ArrayList<Veterinario> listaVeterinarios = new ArrayList<>();
@@ -67,6 +67,7 @@ public class VentanaPrincipal  extends JFrame {
         btn2.addActionListener(e -> new FormAgendarConsulta(listaMascotas, listaVeterinarios, listaServicios, listaConsultas, idConsultaCounter).setVisible(true));
         btn3.addActionListener(e -> new FormAtenderConsulta(listaConsultas).setVisible(true));
         btn4.addActionListener(e -> new FormGenerarFactura(listaConsultas, listaFacturas, idFacturaCounter).setVisible(true));
+        btn5.addActionListener(e -> new FormReportes(listaFacturas, listaConsultas).setVisible(true));
 
         panelBotones.add(btn1);
         panelBotones.add(btn2);
