@@ -10,6 +10,7 @@ public class Mascota {
     private String telefonoDueno;
 
     public Mascota() {
+        
     }
     
     public Mascota(String idMascota, String nombre, String especie, String raza, int edad, String nombreDueno, String telefonoDueno) {

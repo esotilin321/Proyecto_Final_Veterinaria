@@ -103,7 +103,13 @@ public class FormGenerarFactura extends JFrame {
                 return;
             }
 
-            Consulta consulta = atendidas.get(cbConsultas.getSelectedIndex());
+            int idx = cbConsultas.getSelectedIndex();
+            if (idx == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione una consulta de la lista.", "Falta selección", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Consulta consulta = atendidas.get(idx);
             String metodoPago = (String) cbMetodoPago.getSelectedItem();
 
             Pago pago = new Pago(idFacturaCounter[0], new Date(), consulta.getServicio().getPrecio(), metodoPago);

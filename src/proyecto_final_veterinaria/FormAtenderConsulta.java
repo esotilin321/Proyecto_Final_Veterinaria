@@ -87,13 +87,23 @@ public class FormAtenderConsulta extends JFrame {
                 return;
             }
 
+            int idx = cbConsultas.getSelectedIndex();
+            if (idx == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione una consulta de la lista.", "Falta selección", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
             String diagnostico = txtDiagnostico.getText().trim();
             if (diagnostico.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Por favor ingrese un diagnóstico.", "Campo vacío", JOptionPane.WARNING_MESSAGE);
                 return;
             }
+            if (diagnostico.length() < 10) {
+                JOptionPane.showMessageDialog(null, "Por favor, detalle más el diagnóstico (mínimo 10 caracteres).", "Detalle insuficiente", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
 
-            Consulta consulta = agendadas.get(cbConsultas.getSelectedIndex());
+            Consulta consulta = agendadas.get(idx);
             consulta.atenderConsulta(diagnostico);
 
             JOptionPane.showMessageDialog(null,

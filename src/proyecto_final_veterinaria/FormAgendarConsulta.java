@@ -95,9 +95,26 @@ public class FormAgendarConsulta extends JFrame {
                 return;
             }
 
-            Mascota mascota = listaMascotas.get(cbMascota.getSelectedIndex());
-            ServicioMedico servicio = listaServicios.get(cbServicio.getSelectedIndex());
-            Veterinario veterinario = listaVeterinarios.get(cbVeterinario.getSelectedIndex());
+            int idxMascota = cbMascota.getSelectedIndex();
+            int idxServicio = cbServicio.getSelectedIndex();
+            int idxVeterinario = cbVeterinario.getSelectedIndex();
+
+            if (idxMascota == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione una mascota.", "Falta selección", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (idxServicio == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un servicio.", "Falta selección", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            if (idxVeterinario == -1) {
+                JOptionPane.showMessageDialog(null, "Por favor, seleccione un veterinario.", "Falta selección", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            Mascota mascota = listaMascotas.get(idxMascota);
+            ServicioMedico servicio = listaServicios.get(idxServicio);
+            Veterinario veterinario = listaVeterinarios.get(idxVeterinario);
 
             Consulta nueva = new Consulta(idConsultaCounter[0]++, mascota, veterinario, servicio);
             listaConsultas.add(nueva);

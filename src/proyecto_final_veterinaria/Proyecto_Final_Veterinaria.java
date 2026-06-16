@@ -67,20 +67,80 @@ public class Proyecto_Final_Veterinaria {
                 case 1:
                     System.out.println("\n--- 1. REGISTRAR MASCOTA ---");
                     System.out.print("ID Mascota: ");
-                    String idMas = sc.nextLine();
+                    String idMas = sc.nextLine().trim();
+
+                    if (idMas.isEmpty()) {
+                        System.out.println("Error: El ID de la mascota no puede estar vacío.");
+                        break;
+                    }
+
+                    if (!idMas.matches("^[a-zA-Z0-9]+$")) {
+                        System.out.println("Error: El ID debe ser alfanumérico (letras y números sin espacios).");
+                        break;
+                    }
+
+                    boolean duplicado = false;
+                    for (Mascota m : listaMascotas) {
+                        if (m.getIdMascota().equalsIgnoreCase(idMas)) {
+                            duplicado = true;
+                            break;
+                        }
+                    }
+                    if (duplicado) {
+                        System.out.println("Error: El ID de la mascota ya existe. No se puede registrar.");
+                        break;
+                    }
+
                     System.out.print("Nombre de la mascota: ");
-                    String nomMas = sc.nextLine();
+                    String nomMas = sc.nextLine().trim();
+                    if (nomMas.isEmpty() || !nomMas.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                        System.out.println("Error: El nombre de la mascota no puede estar vacío y debe contener solo letras y espacios.");
+                        break;
+                    }
+
                     System.out.print("Especie: ");
-                    String espMas = sc.nextLine();
+                    String espMas = sc.nextLine().trim();
+                    if (espMas.isEmpty() || !espMas.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                        System.out.println("Error: La especie no puede estar vacía y debe contener solo letras y espacios.");
+                        break;
+                    }
+
                     System.out.print("Raza: ");
-                    String razMas = sc.nextLine();
+                    String razMas = sc.nextLine().trim();
+                    if (razMas.isEmpty() || !razMas.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                        System.out.println("Error: La raza no puede estar vacía y debe contener solo letras y espacios.");
+                        break;
+                    }
+
                     System.out.print("Edad (años): ");
-                    int edadMas = sc.nextInt();
-                    sc.nextLine(); // Consumir salto de línea
+                    String edadMasTxt = sc.nextLine().trim();
+                    int edadMas;
+                    try {
+                        edadMas = Integer.parseInt(edadMasTxt);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Error: La edad debe ser un número entero.");
+                        break;
+                    }
+
+                    if (edadMas < 0 || edadMas > 35) {
+                        System.out.println("Error: La edad de la mascota debe estar entre 0 y 35 años.");
+                        break;
+                    }
+
                     System.out.print("Nombre del dueño: ");
-                    String dueno = sc.nextLine();
+                    String dueno = sc.nextLine().trim();
+                    if (dueno.isEmpty() || !dueno.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                        System.out.println("Error: El nombre del dueño no puede estar vacío y debe contener solo letras y espacios.");
+                        break;
+                    }
+
                     System.out.print("Teléfono del dueño: ");
-                    String telDueno = sc.nextLine();
+                    String telDueno = sc.nextLine().trim();
+
+                    if (telDueno.length() != 9 || !telDueno.matches("\\d+")) {
+                        System.out.println("Error: El número de celular debe tener exactamente 9 dígitos.");
+                        break;
+                    }
 
                     Mascota nuevaMascota = new Mascota(idMas, nomMas, espMas, razMas, edadMas, dueno, telDueno);
                     listaMascotas.add(nuevaMascota);

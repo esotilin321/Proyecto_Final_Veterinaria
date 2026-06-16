@@ -101,11 +101,61 @@ public class FormRegistrarMascota extends JFrame {
                     return;
                 }
 
+                // Validar que el ID de la mascota sea alfanumérico
+                if (!id.matches("^[a-zA-Z0-9]+$")) {
+                    JOptionPane.showMessageDialog(null, "El ID de la mascota debe ser alfanumérico (letras y números sin espacios).", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Validar que el nombre de la mascota contenga solo letras y espacios
+                if (!nombre.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                    JOptionPane.showMessageDialog(null, "El nombre de la mascota solo debe contener letras y espacios.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Validar que la especie contenga solo letras y espacios
+                if (!especie.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                    JOptionPane.showMessageDialog(null, "La especie solo debe contener letras y espacios.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Validar que la raza contenga solo letras y espacios
+                if (!raza.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                    JOptionPane.showMessageDialog(null, "La raza solo debe contener letras y espacios.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Validar que el nombre del dueño contenga solo letras y espacios
+                if (!dueno.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                    JOptionPane.showMessageDialog(null, "El nombre del dueño solo debe contener letras y espacios.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Validar que el número de celular del dueño tenga exactamente 9 dígitos
+                if (tel.length() != 9 || !tel.matches("\\d+")) {
+                    JOptionPane.showMessageDialog(null, "El número de celular debe tener exactamente 9 dígitos.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Validar que el ID de la mascota no esté duplicado
+                for (Mascota m : listaMascotas) {
+                    if (m.getIdMascota().equalsIgnoreCase(id)) {
+                        JOptionPane.showMessageDialog(null, "El ID de la mascota ya está registrado. Por favor, use otro ID.", "ID Duplicado", JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                }
+
                 int edad;
                 try {
                     edad = Integer.parseInt(edadTxt);
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "La edad debe ser un número.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "La edad debe ser un número entero.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                // Validar rango lógico para la edad de la mascota
+                if (edad < 0 || edad > 35) {
+                    JOptionPane.showMessageDialog(null, "La edad de la mascota debe estar entre 0 y 35 años.", "Error de validación", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
 
