@@ -5,7 +5,7 @@ public class Mascota {
     private String nombre;
     private String especie;
     private String raza;
-    private int edad;
+    private int edad; //Si es 0 se le concidera cachorro
     private String nombreDueno;
     private String telefonoDueno;
 
