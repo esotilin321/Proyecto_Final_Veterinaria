@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  *
- * @author neyli
+ * @author Jean Purizaga
  */
 public class ReporteAdministrador {
     private String idReporte;
@@ -53,5 +53,5 @@ public class ReporteAdministrador {
        System.out.println("ID: " + idReporte);
        System.out.println("Fecha: " + fechaGeneracion);
        System.out.println("Tipo: " + tipoReporte);
-   }
+   }  
 }

@@ -38,12 +38,11 @@ public class Proyecto_Final_Veterinaria {
         
 
         // Administrador del sistema
-        Administrador admin = new Administrador("Director General", "ADMIN01", "Admin Clinica", "admin@veterinaria.com", "admin123");
 
         System.out.println("");
         System.out.println(" Bienvenido al Sistema de la Clínica Veterinaria");
         System.out.println("");
-        admin.iniciarSesion();
+        
 
         int opcion;
         int idConsultaCounter = 1;
@@ -145,7 +144,7 @@ public class Proyecto_Final_Veterinaria {
                     Mascota nuevaMascota = new Mascota(idMas, nomMas, espMas, razMas, edadMas, dueno, telDueno);
                     listaMascotas.add(nuevaMascota);
                     System.out.println("¡Mascota registrada correctamente!");
-                    admin.gestionarMascotas();
+                    
                     
                     mascota.setIdMascota(idMas);
                     mascota.setNombre(nomMas);
@@ -309,12 +308,11 @@ public class Proyecto_Final_Veterinaria {
                             new Date(),
                             "Facturación de Consulta " + consultaACobrar.getIdConsulta() + " - " + consultaACobrar.getMascota().getNombre()
                     );
-                    admin.gestionarReporte(reporteFactura);
                     break;
 
                 case 5:
                     System.out.println("\n--- 5. REPORTE DEL ADMINISTRADOR ---");
-                    admin.mostrarReportes();
+                    
                     break;
 
                 case 6:
@@ -331,7 +329,6 @@ public class Proyecto_Final_Veterinaria {
                     break;
                     
                 case 7: 
-                    admin.cerrarSesion();
                     System.out.println("Saliendo del sistema de la Clínica Veterinaria. ¡Hasta luego!");
                     break;
 

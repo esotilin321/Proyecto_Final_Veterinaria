@@ -33,7 +33,7 @@ public class FormAtenderConsulta extends JFrame {
         JPanel header = new JPanel();
         header.setBackground(new Color(33, 97, 140));
         header.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
-        JLabel lblTitulo = new JLabel("🩺 Atender Consulta");
+        JLabel lblTitulo = new JLabel("Atender Consulta");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 16));
         lblTitulo.setForeground(Color.WHITE);
         header.add(lblTitulo);

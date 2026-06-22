@@ -46,7 +46,7 @@ public class FormAgendarConsulta extends JFrame {
         JPanel header = new JPanel();
         header.setBackground(new Color(33, 97, 140));
         header.setBorder(BorderFactory.createEmptyBorder(12, 20, 12, 20));
-        JLabel lblTitulo = new JLabel("📋 Agendar Servicio / Consulta");
+        JLabel lblTitulo = new JLabel("Agendar Servicio / Consulta");
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 16));
         lblTitulo.setForeground(Color.WHITE);
         header.add(lblTitulo);

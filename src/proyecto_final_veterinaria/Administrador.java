@@ -12,20 +12,10 @@ import java.util.ArrayList;
  */
 public class Administrador extends Usuario{
     
-    private String cargo;
     private ArrayList<ReporteAdministrador> reportes = new ArrayList<>();
 
-    public Administrador(String cargo, String idUsuario, String nombre_Usuario, String correo_Usuario, String contraseña_Usuario) {
+    public Administrador(String idUsuario, String nombre_Usuario, String correo_Usuario, String contraseña_Usuario) {
         super(idUsuario, nombre_Usuario, correo_Usuario, contraseña_Usuario);
-        this.cargo = cargo;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
     }
     
     @Override
@@ -57,7 +47,6 @@ public class Administrador extends Usuario{
         for (int i = 0; i < reportes.size(); i++) {
             ReporteAdministrador r = reportes.get(i);
             r.mostrarReporte();
-            System.out.println("----------------");
         }
     }
 }
