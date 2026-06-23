@@ -74,6 +74,6 @@ public class Factura {
         System.out.println("----------------------------------");
         System.out.println("Monto a pagar: $" + montoTotal);
         System.out.println("Método de Pago: " + metodoPago);
-        System.out.println("==================================");
+        System.out.println("");
     }
 }

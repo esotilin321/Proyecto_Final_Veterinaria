@@ -7,20 +7,49 @@ public class Mascota {
     private String raza;
     private int edad; //Si es 0 se le concidera cachorro
     private String nombreDueno;
+    private String apellidoPaternoDueno;
+    private String apellidoMaternoDueno;
     private String telefonoDueno;
+    private Dueño dueño;
 
     public Mascota() {
         
     }
     
-    public Mascota(String idMascota, String nombre, String especie, String raza, int edad, String nombreDueno, String telefonoDueno) {
+    public Mascota(String idMascota, String nombre, String especie, String raza, int edad, String nombreDueno, String apellidoPaternoDueno, String apellidoMaternoDueno, String telefonoDueno) {
         this.idMascota = idMascota;
         this.nombre = nombre;
         this.especie = especie;
         this.raza = raza;
         this.edad = edad;
         this.nombreDueno = nombreDueno;
+        this.apellidoPaternoDueno = apellidoPaternoDueno;
+        this.apellidoMaternoDueno = apellidoMaternoDueno;
         this.telefonoDueno = telefonoDueno;
+    }
+
+    public String getNombreDueno() {
+        return nombreDueno;
+    }
+
+    public void setNombreDueno(String nombreDueno) {
+        this.nombreDueno = nombreDueno;
+    }
+
+    public String getApellidoPaternoDueno() {
+        return apellidoPaternoDueno;
+    }
+
+    public void setApellidoPaternoDueno(String apellidoPaternoDueno) {
+        this.apellidoPaternoDueno = apellidoPaternoDueno;
+    }
+
+    public String getApellidoMaternoDueno() {
+        return apellidoMaternoDueno;
+    }
+
+    public void setApellidoMaternoDueno(String apellidoMaternoDueno) {
+        this.apellidoMaternoDueno = apellidoMaternoDueno;
     }
 
     public String getIdMascota() {
@@ -63,14 +92,6 @@ public class Mascota {
         this.edad = edad;
     }
 
-    public String getNombreDueno() {
-        return nombreDueno;
-    }
-
-    public void setNombreDueno(String nombreDueno) {
-        this.nombreDueno = nombreDueno;
-    }
-
     public String getTelefonoDueno() {
         return telefonoDueno;
     }
@@ -85,6 +106,5 @@ public class Mascota {
         System.out.println("Especie: " + especie);
         System.out.println("Raza: " + raza);
         System.out.println("Edad: " + edad + " años");
-        System.out.println("Dueño: " + nombreDueno + " (Tel: " + telefonoDueno + ")");
     }
 }

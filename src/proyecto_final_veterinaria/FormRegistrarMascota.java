@@ -18,13 +18,13 @@ public class FormRegistrarMascota extends JFrame {
 
     private ArrayList<Mascota> listaMascotas;
 
-    private JTextField txtId, txtNombre, txtEspecie, txtRaza, txtEdad, txtDueno, txtTelefono;
+    private JTextField txtId, txtNombre, txtEspecie, txtRaza, txtEdad, txtDueno, txtPaterno, txtMaterno, txtTelefono;
 
     public FormRegistrarMascota(ArrayList<Mascota> listaMascotas) {
         this.listaMascotas = listaMascotas;
 
         setTitle("Registrar Mascota");
-        setSize(420, 420);
+        setSize(600, 350);
         setLocationRelativeTo(null);
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -43,9 +43,21 @@ public class FormRegistrarMascota extends JFrame {
         header.add(lblTitulo);
 
         // Formulario
-        JPanel formulario = new JPanel(new GridLayout(7, 2, 10, 10));
+        JPanel formulario = new JPanel(new GridLayout(1, 2, 15, 10));
         formulario.setBackground(new Color(240, 248, 255));
-        formulario.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
+        formulario.setBorder(BorderFactory.createEmptyBorder(20, 20, 10, 20));
+
+        JPanel panelMascota = new JPanel(new GridLayout(5, 2, 10, 10));
+        panelMascota.setBackground(new Color(240, 248, 255));
+        panelMascota.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Datos de la Mascota", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new Font("Arial", Font.BOLD, 12), Color.BLACK));
+
+        JPanel panelDueno = new JPanel(new GridLayout(4, 2, 10, 10));
+        panelDueno.setBackground(new Color(240, 248, 255));
+        panelDueno.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.GRAY), "Datos del Dueño", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new Font("Arial", Font.BOLD, 12), Color.BLACK));
+        
+        JPanel panelDuenoWrapper = new JPanel(new BorderLayout());
+        panelDuenoWrapper.setBackground(new Color(240, 248, 255));
+        panelDuenoWrapper.add(panelDueno, BorderLayout.NORTH);
 
         txtId       = new JTextField();
         txtNombre   = new JTextField();
@@ -53,15 +65,23 @@ public class FormRegistrarMascota extends JFrame {
         txtRaza     = new JTextField();
         txtEdad     = new JTextField();
         txtDueno    = new JTextField();
+        txtPaterno  = new JTextField();
+        txtMaterno  = new JTextField();
         txtTelefono = new JTextField();
 
-        formulario.add(new JLabel("ID Mascota:"));        formulario.add(txtId);
-        formulario.add(new JLabel("Nombre:"));            formulario.add(txtNombre);
-        formulario.add(new JLabel("Especie:"));           formulario.add(txtEspecie);
-        formulario.add(new JLabel("Raza:"));              formulario.add(txtRaza);
-        formulario.add(new JLabel("Edad (años):"));       formulario.add(txtEdad);
-        formulario.add(new JLabel("Nombre del dueño:"));  formulario.add(txtDueno);
-        formulario.add(new JLabel("Teléfono del dueño:")); formulario.add(txtTelefono);
+        panelMascota.add(new JLabel("ID Mascota:"));        panelMascota.add(txtId);
+        panelMascota.add(new JLabel("Nombre:"));            panelMascota.add(txtNombre);
+        panelMascota.add(new JLabel("Especie:"));           panelMascota.add(txtEspecie);
+        panelMascota.add(new JLabel("Raza:"));              panelMascota.add(txtRaza);
+        panelMascota.add(new JLabel("Edad (años):"));       panelMascota.add(txtEdad);
+
+        panelDueno.add(new JLabel("Nombre:"));              panelDueno.add(txtDueno);
+        panelDueno.add(new JLabel("Ap. Paterno:"));         panelDueno.add(txtPaterno);
+        panelDueno.add(new JLabel("Ap. Materno:"));         panelDueno.add(txtMaterno);
+        panelDueno.add(new JLabel("Teléfono:"));            panelDueno.add(txtTelefono);
+
+        formulario.add(panelMascota);
+        formulario.add(panelDuenoWrapper);
 
         // Botones
         JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.CENTER, 15, 10));
@@ -92,11 +112,13 @@ public class FormRegistrarMascota extends JFrame {
                 String especie= txtEspecie.getText().trim();
                 String raza   = txtRaza.getText().trim();
                 String dueno  = txtDueno.getText().trim();
+                String paterno= txtPaterno.getText().trim();
+                String materno= txtMaterno.getText().trim();
                 String tel    = txtTelefono.getText().trim();
                 String edadTxt= txtEdad.getText().trim();
 
                 if (id.isEmpty() || nombre.isEmpty() || especie.isEmpty() ||
-                    raza.isEmpty() || dueno.isEmpty() || tel.isEmpty() || edadTxt.isEmpty()) {
+                    raza.isEmpty() || dueno.isEmpty() || paterno.isEmpty() || materno.isEmpty() || tel.isEmpty() || edadTxt.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Por favor complete todos los campos.", "Campos vacíos", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -130,6 +152,14 @@ public class FormRegistrarMascota extends JFrame {
                     JOptionPane.showMessageDialog(null, "El nombre del dueño solo debe contener letras y espacios.", "Error de validación", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                if (!paterno.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                    JOptionPane.showMessageDialog(null, "El apellido paterno del dueño solo debe contener letras y espacios.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                if (!materno.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$")) {
+                    JOptionPane.showMessageDialog(null, "El apellido materno del dueño solo debe contener letras y espacios.", "Error de validación", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
 
                 // Validar que el número de celular del dueño tenga exactamente 9 dígitos
                 if (tel.length() != 9 || !tel.matches("\\d+")) {
@@ -159,7 +189,7 @@ public class FormRegistrarMascota extends JFrame {
                     return;
                 }
 
-                Mascota nueva = new Mascota(id, nombre, especie, raza, edad, dueno, tel);
+                Mascota nueva = new Mascota(id, nombre, especie, raza, edad, dueno, paterno, materno, tel);
                 listaMascotas.add(nueva);
                 JOptionPane.showMessageDialog(null, "¡Mascota registrada correctamente!", "Éxito", JOptionPane.INFORMATION_MESSAGE);
                 limpiarCampos();
@@ -183,6 +213,8 @@ public class FormRegistrarMascota extends JFrame {
         txtRaza.setText("");
         txtEdad.setText("");
         txtDueno.setText("");
+        txtPaterno.setText("");
+        txtMaterno.setText("");
         txtTelefono.setText("");
     }
 

@@ -75,7 +75,7 @@ public class Consulta {
         System.out.println("ID Consulta: " + idConsulta);
         System.out.println("Mascota: " + mascota.getNombre() + " (" + mascota.getEspecie() + ")");
         System.out.println("Veterinario: " + veterinario.getNombre_Usuario());
-        System.out.println("Servicio: " + servicio.getNombreServicio() + " - $" + servicio.getPrecio());
+        System.out.println("Servicio: " + servicio.getNombreServicio() + " - S/." + servicio.getPrecio());
         System.out.println("Diagnóstico: " + diagnostico);
         System.out.println("Estado: " + estado);
     }

@@ -141,7 +141,7 @@ public class Proyecto_Final_Veterinaria {
                         break;
                     }
 
-                    Mascota nuevaMascota = new Mascota(idMas, nomMas, espMas, razMas, edadMas, dueno, telDueno);
+                    Mascota nuevaMascota = new Mascota();
                     listaMascotas.add(nuevaMascota);
                     System.out.println("¡Mascota registrada correctamente!");
                     
